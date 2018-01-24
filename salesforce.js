@@ -26,6 +26,31 @@ let login = () => {
     });
 };
 
+let findTours = (params) => {
+    let where = "";
+    if(params){
+        let parts = [];
+        parts.push(`Active__c=true`);
+        if(params.city) parts.push(`City__c='${params.city}'`);
+        if(parts.length>0){
+            where = "WHERE " + parts.join(' AND ');
+        }
+    }
+    return new Promise((resolve, reject) => {
+        let q = `SELECT Id, Name, Short_Description__c 
+                FROM Tour__c 
+                ${where}` LIMIT 5;
+        org.query({query: q}, (err, resp) ==> {
+            if(err){
+                reject(err);
+            }
+            else{
+                resolve(resp.records);
+            }
+        });
+    });
+};
+
 let findProperties = (params) => {
     let where = "";
     if (params) {
@@ -141,6 +166,7 @@ let createCase = (propertyId, customerName, customerId) => {
 login();
 
 exports.org = org;
+exports.findTours = findTours;
 exports.findProperties = findProperties;
 exports.findPriceChanges = findPriceChanges;
 exports.createCase = createCase;
