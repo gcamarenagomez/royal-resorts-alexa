@@ -1,0 +1,25 @@
+{
+  "name": "royal-resorts-alexa",
+  "version": "1.0.0",
+  "description": "Alexa Skill for experience reservations",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "keywords": [
+    "alexa",
+    "royal",
+    "resorts",
+    "hospitality",
+    "reservations"
+  ],
+  "author": "Gabriel Camarena Gomez",
+  "license": "ISC",
+  "dependencies": {
+    "alexa-nodekit": "^1.0.2",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "nforce": "^1.4.1",
+    "request": "^2.70.0"
+  }
+}
