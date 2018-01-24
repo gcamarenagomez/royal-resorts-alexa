@@ -39,7 +39,7 @@ let findTours = (params) => {
     return new Promise((resolve, reject) => {
         let q = `SELECT Id, Name, Short_Description__c 
                 FROM Tour__c 
-                ${where}` LIMIT 5;
+                ${where} LIMIT 5`;
         org.query({query: q}, (err, resp) ==> {
             if(err){
                 reject(err);
