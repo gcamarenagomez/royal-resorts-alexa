@@ -82,6 +82,9 @@ exports.AnswerBoolean = (slots, session, response) => {
         if(answer === 'yes'){
             text += `Excellent. Your reservation has been finalised.` ;
         }
+        else{
+            text += `Sorry to hear that. Please restart the process and try again.`;
+        }
     }
     response.say(text);
 }
@@ -106,7 +109,7 @@ exports.AnswerLastName = (slots, session, response) => {
     let lastName = slots.lastName.value;
     let text = '';
     if(session.attributes.stage === 'ask_lastName'){
-        text += `Thank you. Your reservation is as follows: ${session.attributes.selectedTour.name}, for ${session.attributes.adults} adults and ${session.attributes.children} children. Reservation contact: ${session.attributes.firstName} ${lastName}. Is this OK?`;
+        text += `Thank you. Your reservation is as follows: ${session.attributes.selectedTour.name}, for ${session.attributes.adults} adults and ${session.attributes.children} children on ${session.attributes.date} at ${session.attributes.time}. Reservation contact: ${session.attributes.firstName} ${lastName}. Is this OK?`;
         session.attributes.lastName = lastName;
         session.attributes.stage = 'confirm_rez';
     }
@@ -121,6 +124,18 @@ exports.date = (slots, session, response) => {
         text += `Setting your reservation date to ${date}. At what time should I book this tour?`;
         session.attributes.date = date;
         session.attributes.stage = 'ask_time';
+    }
+    response.say(text);
+}
+
+exports.time = (slots, session, response) => {
+    console.log(slots.resTime.value);
+    let time = slots.resTime.value;
+    let text = '';
+    if(session.attributes.stage === 'ask_time'){
+        text += `I haved booked a space for you at ${time}. Now, can I have your first name?`;
+        session.attributes.time = time;
+        session.attributes.stage = 'ask_firstName';
     }
     response.say(text);
 }
