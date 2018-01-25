@@ -40,22 +40,23 @@ exports.city = (slots, session, response) => {
 
 exports.AnswerNumber = (slots, session, response) => {
     let option = slots.NumericAnswer.value - 1;
+    let text = '';
     if(session.attributes.stage === 'select_option'){
         console.log(session.attributes.tours);        
         let selectedTour = session.attributes.tours[option];
         console.log(selectedTour);
-        let text = `You selected ${selectedTour.name}. `;
+        text += `You selected ${selectedTour.name}. `;
         text += 'Would you like to make a reservation?';
         session.attributes.selectedTour = selectedTour;
         session.attributes.stage = 'ask_reservation';        
     }
     else if(session.attributes.stage === 'ask_adults'){
-        let text = `Making reservation for ${option} adults. How many children?`;
+        text += `Making reservation for ${option} adults. How many children?`;
         session.attributes.adults = option;
         session.attributes.stage = 'ask_children';
     }
     else if(session.attributes.stage === 'ask_children'){
-        let text = `Adding ${option} children to your reservation. To complete the process please give me your first name.`;
+        text += `Adding ${option} children to your reservation. To complete the process please give me your first name.`;
     }
     response.say(text);
 }
