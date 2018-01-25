@@ -44,8 +44,24 @@ exports.AnswerNumber = (slots, session, response) => {
         let option = slots.NumericAnswer.value - 1;
         let selectedTour = session.attributes.tours[option];
         console.log(selectedTour);
-        let text = `You selected Tour ${selectedTour.name}. `;
+        let text = `You selected ${selectedTour.name}. `;
         text += 'Would you like to make a reservation?';
+        response.say(text);
+        session.attributes.selectedTour = selectedTour;
+        session.attributes.stage === 'ask_reservation';
+    }
+}
+
+exports.AnswerBoolean = (slots, session, response) => {
+    if(session.attributes.stage === 'ask_reservation'){
+        let answer = slots.BoolAnswer.value;
+        let text = '';
+        if(answer === 'Yes'){
+            text += 'How many adults?';
+        }
+        else {
+            text += 'Fuck off then asshole';
+        }
         response.say(text);
     }
 }
