@@ -31,7 +31,7 @@ let findTours = (params) => {
     if(params){
         let parts = [];
         parts.push(`Active__c=true`);
-        if(params.city) parts.push(`City__c='${params.city}'`);
+        if(params.city) parts.push(`City__c includes ('${params.city}')`);
         if(parts.length>0){
             where = "WHERE " + parts.join(' AND ');
         }
