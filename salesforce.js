@@ -37,7 +37,7 @@ let findTours = (params) => {
         }
     }
     return new Promise((resolve, reject) => {
-        let q = `SELECT Id, Name, Short_Description__c 
+        let q = `SELECT Id, Name, Short_Description__c, Price__c  
                 FROM Tour__c 
                 ${where} LIMIT 5`;
         org.query({query: q}, (err, resp) => {

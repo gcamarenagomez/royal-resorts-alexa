@@ -12,11 +12,13 @@ exports.city = (slots, session, response) => {
     if(session.attributes.stage === 'ask_city'){
         salesforce.findTours({city: slots.CityName.value})
         .then(tours => {
+            session.attributes.tours = tours;
             if(tours && tours.length>0){
+                session.attributes.stage = 'select_option';
                 let text = `OK, here are the tours I found near ${slots.CityName.value}: `;
                 let i = 1;
                 tours.forEach(t => {
-                    text += `Tour ${i}: ${t.get('Name')}, ${t.get('Short_Description__c')}. Price: ${t.get('Price__c')}`;
+                    text += `Tour ${i}: ${t.get('Name')}, ${t.get('Short_Description__c')}. Price: ${t.get('Price__c')} US Dollars`;
                 });
                 text += `Which tour would you like?`;
                 response.say(text);
@@ -32,6 +34,16 @@ exports.city = (slots, session, response) => {
     }
     else{
         response.say("Sorry, I didn't understand that");
+    }
+}
+
+exports.selectOption = (slots, session, response) => {
+    if(session.attributes.stage === 'select_option'){
+        console.log(session.attributes.tours);
+        let option = slots.optionNumber.value;
+        console.log(option);
+        response.say(`You selected Tour ${option}`);
+        response.ask("How many adults?");
     }
 }
 
