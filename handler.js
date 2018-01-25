@@ -48,7 +48,7 @@ exports.AnswerNumber = (slots, session, response) => {
         text += 'Would you like to make a reservation?';
         response.say(text);
         session.attributes.selectedTour = selectedTour;
-        session.attributes.stage === 'ask_reservation';
+        session.attributes.stage = 'ask_reservation';
     }
 }
 
