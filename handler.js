@@ -57,6 +57,7 @@ exports.AnswerNumber = (slots, session, response) => {
     }
     else if(session.attributes.stage === 'ask_children'){
         text += `Adding ${option} children to your reservation. To complete the process please give me your first name.`;
+        session.attributes.children = option;
         session.attributes.stage = 'ask_firstName';
     }
     response.say(text);
@@ -94,3 +95,14 @@ exports.AnswerFirstName = (slots, session, response) => {
     response.say(text);
 }
 
+exports.AnswerLastName = (slots, session, response) => {
+    console.log(slots.lastName.value);
+    let lastName = slots.lastName.value;
+    let text = '';
+    if(session.attributes.stage === 'ask_lastName'){
+        text += `Thank you. Your reservation is as follows: ${session.attributes.selectedTour.name}, for ${session.attributes.adults} adults and ${session.attributes.children} children. Reservation contact: ${session.attributes.firstName} ${lastName}. Is this OK?`;
+        session.attributes.lastName = lastName;
+        session.attributes.stage = 'confirm_rez';
+    }
+    response.say(text);
+}
