@@ -42,9 +42,9 @@ exports.AnswerNumber = (slots, session, response) => {
     if(session.attributes.stage === 'select_option'){
         console.log(session.attributes.tours);
         let option = slots.NumericAnswer.value - 1;
-        let selectedTour = session.attributes.tours[0];
-        console.log(option);
-        let text = `You selected Tour ${selectedTour.get('Name')}. `;
+        let selectedTour = session.attributes.tours[option];
+        console.log(selectedTour);
+        let text = `You selected Tour ${selectedTour.name}. `;
         text += 'Would you like to make a reservation?';
         response.say(text);
     }
