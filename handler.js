@@ -39,11 +39,11 @@ exports.city = (slots, session, response) => {
 }
 
 exports.AnswerNumber = (slots, session, response) => {
-    let option = slots.NumericAnswer.value - 1;
+    let option = slots.NumericAnswer.value;
     let text = '';
     if(session.attributes.stage === 'select_option'){
         console.log(session.attributes.tours);        
-        let selectedTour = session.attributes.tours[option];
+        let selectedTour = session.attributes.tours[option-1];
         console.log(selectedTour);
         text += `You selected ${selectedTour.name}. `;
         text += 'Would you like to make a reservation?';
@@ -57,6 +57,7 @@ exports.AnswerNumber = (slots, session, response) => {
     }
     else if(session.attributes.stage === 'ask_children'){
         text += `Adding ${option} children to your reservation. To complete the process please give me your first name.`;
+        session.attributes.stage = 'ask_firstName';
     }
     response.say(text);
 }
@@ -76,5 +77,20 @@ exports.AnswerBoolean = (slots, session, response) => {
         }
         response.say(text);
     }
+}
+
+exports.AnswerFirstName = (slots, session, response) => {
+    console.log(slots.firstName.value);
+    let firstName = slots.firstName.value;
+    let text = '';
+    if(session.attributes.stage === 'ask_firstName'){
+        text += `Thank you ${firstName}, can I have your last name?`;
+        session.attributes.firstName = firstName;
+        session.attributes.stage = 'ask_lastName';
+    }
+    else{
+        text += `Hello, ${firstName}!`;
+    }
+    response.say(text);
 }
 
