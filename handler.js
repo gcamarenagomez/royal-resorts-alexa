@@ -14,9 +14,11 @@ exports.city = (slots, session, response) => {
         .then(tours => {
             if(tours && tours.length>0){
                 let text = `OK, here are the tours I found near ${slots.CityName.value}: `;
+                let i = 1;
                 tours.forEach(t => {
-                    text += `${t.get('Name')}, ${t.get('Short_Description__c')}. Price: ${t.get('Price__c')}`;
+                    text += `Tour ${i}: ${t.get('Name')}, ${t.get('Short_Description__c')}. Price: ${t.get('Price__c')}`;
                 });
+                text += `Which tour would you like?`;
                 response.say(text);
             }
             else{
@@ -32,3 +34,4 @@ exports.city = (slots, session, response) => {
         response.say("Sorry, I didn't understand that");
     }
 }
+
