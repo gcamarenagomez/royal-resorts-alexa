@@ -18,7 +18,7 @@ exports.city = (slots, session, response) => {
                 let text = `OK, here are the tours I found near ${slots.CityName.value}: `;
                 let i = 1;
                 tours.forEach(t => {
-                    text += `Tour ${i}: ${t.get('Name')}, ${t.get('Short_Description__c')}. Price: ${t.get('Price__c')} US Dollars`;
+                    text += `Tour ${i}: ${t.get('Name')}, ${t.get('Short_Description__c')}. Price: ${t.get('Price__c')} US Dollars. `;
                 });
                 response.say(text);
                 response.ask('Which tour would you like?');
