@@ -19,9 +19,10 @@ exports.city = (slots, session, response) => {
                 let i = 1;
                 tours.forEach(t => {
                     text += `Tour ${i}: ${t.get('Name')}, ${t.get('Short_Description__c')}. Price: ${t.get('Price__c')} US Dollars. `;
+                    i += 1;
                 });
+                text += 'Which tour would you like?';
                 response.say(text);
-                response.ask('Which tour would you like?');
             }
             else{
                 response.say(`Sorry, I did not find any tours in ${slots.CityName.value}`)
@@ -37,10 +38,10 @@ exports.city = (slots, session, response) => {
     }
 }
 
-exports.selectOption = (slots, session, response) => {
+exports.AnswerNumber = (slots, session, response) => {
     if(session.attributes.stage === 'select_option'){
         console.log(session.attributes.tours);
-        let option = slots.optionNumber.value;
+        let option = slots.NumericAnswer.value;
         console.log(option);
         response.say(`You selected Tour ${option}`);
         response.ask("How many adults?");
