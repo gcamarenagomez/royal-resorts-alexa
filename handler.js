@@ -39,18 +39,25 @@ exports.city = (slots, session, response) => {
 }
 
 exports.AnswerNumber = (slots, session, response) => {
+    let option = slots.NumericAnswer.value - 1;
     if(session.attributes.stage === 'select_option'){
-        console.log(session.attributes.tours);
-        let option = slots.NumericAnswer.value - 1;
+        console.log(session.attributes.tours);        
         let selectedTour = session.attributes.tours[option];
         console.log(selectedTour);
         let text = `You selected ${selectedTour.name}. `;
         text += 'Would you like to make a reservation?';
         session.attributes.selectedTour = selectedTour;
-        session.attributes.stage = 'ask_reservation';
-        response.say(text);
-        
+        session.attributes.stage = 'ask_reservation';        
     }
+    else if(session.attributes.stage === 'ask_adults'){
+        let text = `Making reservation for ${option} adults. How many children?`;
+        session.attributes.adults = option;
+        session.attributes.stage = 'ask_children';
+    }
+    else if(session.attributes.stage === 'ask_children'){
+        let text = `Adding ${option} children to your reservation. To complete the process please give me your first name.`;
+    }
+    response.say(text);
 }
 
 exports.AnswerBoolean = (slots, session, response) => {
@@ -59,11 +66,12 @@ exports.AnswerBoolean = (slots, session, response) => {
     if(session.attributes.stage === 'ask_reservation'){
         let answer = slots.BoolAnswer.value;
         let text = '';
-        if(answer === 'Yes'){
+        if(answer === 'yes'){
+            session.attributes.stage = 'ask_adults';
             text += 'How many adults?';
         }
         else {
-            text += 'Fuck off then asshole';
+            text += 'OK, please let me know if I can further assist you';
         }
         response.say(text);
     }
