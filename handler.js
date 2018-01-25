@@ -46,9 +46,10 @@ exports.AnswerNumber = (slots, session, response) => {
         console.log(selectedTour);
         let text = `You selected ${selectedTour.name}. `;
         text += 'Would you like to make a reservation?';
-        response.say(text);
         session.attributes.selectedTour = selectedTour;
         session.attributes.stage = 'ask_reservation';
+        response.say(text);
+        
     }
 }
 
