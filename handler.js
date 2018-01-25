@@ -56,9 +56,9 @@ exports.AnswerNumber = (slots, session, response) => {
         session.attributes.stage = 'ask_children';
     }
     else if(session.attributes.stage === 'ask_children'){
-        text += `Adding ${option} children to your reservation. To complete the process please give me your first name.`;
+        text += `Adding ${option} children to your reservation. When do you wish to take the tour?`;
         session.attributes.children = option;
-        session.attributes.stage = 'ask_firstName';
+        session.attributes.stage = 'ask_date';
     }
     response.say(text);
 }
@@ -66,9 +66,9 @@ exports.AnswerNumber = (slots, session, response) => {
 exports.AnswerBoolean = (slots, session, response) => {
     console.log(slots.BoolAnswer.value);
     console.log(session.attributes.stage);
-    if(session.attributes.stage === 'ask_reservation'){
-        let answer = slots.BoolAnswer.value;
-        let text = '';
+    let answer = slots.BoolAnswer.value;
+    let text = '';
+    if(session.attributes.stage === 'ask_reservation'){        
         if(answer === 'yes'){
             session.attributes.stage = 'ask_adults';
             text += 'How many adults?';
@@ -76,8 +76,14 @@ exports.AnswerBoolean = (slots, session, response) => {
         else {
             text += 'OK, please let me know if I can further assist you';
         }
-        response.say(text);
+        
     }
+    else if(session.attributes.stage === 'confirm_rez'){
+        if(answer === 'yes'){
+            text += `Excellent. Your reservation has been finalised.` ;
+        }
+    }
+    response.say(text);
 }
 
 exports.AnswerFirstName = (slots, session, response) => {
@@ -103,6 +109,18 @@ exports.AnswerLastName = (slots, session, response) => {
         text += `Thank you. Your reservation is as follows: ${session.attributes.selectedTour.name}, for ${session.attributes.adults} adults and ${session.attributes.children} children. Reservation contact: ${session.attributes.firstName} ${lastName}. Is this OK?`;
         session.attributes.lastName = lastName;
         session.attributes.stage = 'confirm_rez';
+    }
+    response.say(text);
+}
+
+exports.date = (slots, session, response) => {
+    console.log(slots.resDate.value);
+    let date = slots.resDate.value;
+    let text = '';
+    if(session.attributes.stage === 'ask_date'){
+        text += `Setting your reservation date to ${date}. At what time should I book this tour?`;
+        session.attributes.date = date;
+        session.attributes.stage = 'ask_time';
     }
     response.say(text);
 }
