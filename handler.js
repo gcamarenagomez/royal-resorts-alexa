@@ -53,6 +53,7 @@ exports.AnswerNumber = (slots, session, response) => {
 }
 
 exports.AnswerBoolean = (slots, session, response) => {
+    console.log(slots.BoolAnswer.value);
     if(session.attributes.stage === 'ask_reservation'){
         let answer = slots.BoolAnswer.value;
         let text = '';
