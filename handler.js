@@ -41,10 +41,12 @@ exports.city = (slots, session, response) => {
 exports.AnswerNumber = (slots, session, response) => {
     if(session.attributes.stage === 'select_option'){
         console.log(session.attributes.tours);
-        let option = slots.NumericAnswer.value;
+        let option = slots.NumericAnswer.value - 1;
+        let selectedTour = session.attributes.tours[0];
         console.log(option);
-        response.say(`You selected Tour ${option}`);
-        response.ask("How many adults?");
+        let text = `You selected Tour ${selectedTour.get('Name')}. `;
+        text += 'Would you like to make a reservation?';
+        response.say(text);
     }
 }
 
