@@ -55,12 +55,13 @@ let makeReservation = (session) => {
     console.log('Session ' + session.attributes.selectedTour.id);
     return new Promise((resolve, reject) => {
         let rez = nforce.createSObject('Tour_Reservation__c');
-        console.log(session.attributes.Adults__c);
+        console.log(session.attributes.adults);
+        console.log(session.attributes.children);
         rez.set('Tour__c', session.attributes.selectedTour.id);
         rez.set('Contact_First_Name__c', session.attributes.firstName);
         rez.set('Contact_Last_Name__c', session.attributes.lastName);
-        rez.set('Adults__c', parseInt(session.attributes.Adults__c));
-        //rez.set('Children__c', session.attributes.Children__c);
+        rez.set('Adults__c', parseInt(session.attributes.adults));
+        //rez.set('Children__c', session.attributes.children);
         //rez.set('Reservation_Date__c', session.attributes.date);
         rez.set('Reservation_Time__c', session.attributes.time);
         org.insert({sobject: rez}, err => {
