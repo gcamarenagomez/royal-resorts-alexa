@@ -82,7 +82,7 @@ exports.AnswerBoolean = (slots, session, response) => {
         if(answer === 'yes'){
             salesforce.makeReservation({session: session})
             .then(rez => {
-                text += ´Excellent ${session.attributes.firstName} your reservation has been confirmed.´;
+                text += `Excellent ${session.attributes.firstName} your reservation has been confirmed.`;
             })
             .catch((err)=> {
                 console.error(err);
