@@ -80,7 +80,7 @@ exports.AnswerBoolean = (slots, session, response) => {
     }
     else if(session.attributes.stage === 'confirm_rez'){
         if(answer === 'yes'){
-            salesforce.makeReservation({session: session})
+            salesforce.makeReservation(session)
             .then(rez => {
                 text += `Excellent ${session.attributes.firstName} your reservation has been confirmed.`;
             })
