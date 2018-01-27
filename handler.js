@@ -80,18 +80,17 @@ exports.AnswerBoolean = (slots, session, response) => {
     }
     else if(session.attributes.stage === 'confirm_rez'){
         console.log('Confirm rez stage');
+        text += `Excellent ${session.attributes.firstName} your reservation has been confirmed.`;
         if(answer === 'yes'){
             salesforce.makeReservation(session)
             .then(rez => {
                 console.log('Reservation created successfully');
-                text += `Excellent ${session.attributes.firstName} your reservation has been confirmed.`;
+                
                 console.log('Response: ' + text);
-                response.say(text);
             })
             .catch((err)=> {
                 console.error(err);
                 text += 'Oops, something went wrong...';
-                response.say(text);
             })
         }
         else{
