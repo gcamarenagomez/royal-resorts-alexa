@@ -77,3 +77,4 @@ login();
 
 exports.org = org;
 exports.findTours = findTours;
+exports.makeReservation = makeReservation;
