@@ -55,6 +55,7 @@ let makeReservation = (session) => {
     console.log('Session ' + session.attributes.selectedTour.id);
     return new Promise((resolve, reject) => {
         let rez = nforce.createSObject('Tour_Reservation__c');
+        console.log(parseInt(session.attributes.Adults__c));
         rez.set('Tour__c', session.attributes.selectedTour.id);
         rez.set('Contact_First_Name__c', session.attributes.firstName);
         rez.set('Contact_Last_Name__c', session.attributes.lastName);
