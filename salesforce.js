@@ -51,6 +51,27 @@ let findTours = (params) => {
     });
 };
 
+let makeReservation = (session) => {
+    return new Promise((resolve, reject) => {
+        let rez = nforce.createSObject('Tour_Reservation__c');
+        rez.set('Tour__c', ${session.attributes.selectedTour.id});
+        rez.set('Contact_First_Name__c', ${session.attributes.firstName});
+        rez.set('Contact_Last_Name__c', ${session.attributes.lastName});
+        rez.set('Adults__c', ${session.attributes.Adults__c});
+        rez.set('Children__c', ${session.attributes.Children__c});
+        rez.set('Reservation_Date__c', ${session.attributes.date});
+        rez.set('Reservation_Time__c', ${session.attributes.time});
+        org.insert({sobject: rez}, err => {
+            if (err) {
+                console.error(err);
+                reject("An error occurred while creating a reservation");
+            } else {
+                resolve(rez);
+            }
+        });
+    });
+}
+
 
 login();
 
