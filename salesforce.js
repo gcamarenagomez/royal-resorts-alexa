@@ -61,8 +61,8 @@ let makeReservation = (session) => {
         rez.set('Contact_First_Name__c', session.attributes.firstName);
         rez.set('Contact_Last_Name__c', session.attributes.lastName);
         rez.set('Adults__c', parseInt(session.attributes.adults));
-        //rez.set('Children__c', session.attributes.children);
-        //rez.set('Reservation_Date__c', session.attributes.date);
+        rez.set('Children__c', session.attributes.children);
+        rez.set('Reservation_Date__c', session.attributes.date);
         rez.set('Reservation_Time__c', session.attributes.time);
         org.insert({sobject: rez}, err => {
             if (err) {
