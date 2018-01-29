@@ -152,3 +152,7 @@ exports.time = (slots, session, response) => {
     }
     response.ask(text);
 }
+
+exports.romance = (slots, session, response) => {
+    response.speak('Time for some romance!').audioPlayerPlay('REPLACE_ALL','https://royal-resorts-alexa.herokuapp.com/','myMusic','expectedPreviousStream',5000);
+}
