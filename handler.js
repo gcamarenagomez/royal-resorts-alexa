@@ -154,5 +154,5 @@ exports.time = (slots, session, response) => {
 }
 
 exports.romance = (slots, session, response) => {
-    response.say('<audio src="https://s3.amazonaws.com/royal-resorts/carlesswhisper1.mp3" />');
+    response.say('<audio src="https://s3.amazonaws.com/royal-resorts/carlesswhisper4.mp3" />');
 }
