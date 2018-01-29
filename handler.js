@@ -18,11 +18,11 @@ exports.city = (slots, session, response) => {
                 let text = `OK, here are the tours I found near ${slots.CityName.value}: `;
                 let i = 1;
                 tours.forEach(t => {
-                    text += `Tour ${i}: ${t.get('Name')}, ${t.get('Short_Description__c')}. Price: ${t.get('Price__c')} US Dollars. `;
+                    text += `Tour ${i}: ${t.get('Name')}. Price: ${t.get('Price__c')} US Dollars. `;
                     i += 1;
                 });
                 text += 'Which tour would you like?';
-                response.say(text);
+                response.ask(text);
             }
             else{
                 response.say(`Sorry, I did not find any tours in ${slots.CityName.value}`)
@@ -60,7 +60,7 @@ exports.AnswerNumber = (slots, session, response) => {
         session.attributes.children = option;
         session.attributes.stage = 'ask_date';
     }
-    response.say(text);
+    response.ask(text);
 }
 
 exports.AnswerBoolean = (slots, session, response) => {
@@ -76,6 +76,7 @@ exports.AnswerBoolean = (slots, session, response) => {
         else {
             text += 'OK, please let me know if I can further assist you';
         }
+        response.ask(text);
         
     }
     else if(session.attributes.stage === 'confirm_rez'){
@@ -96,8 +97,9 @@ exports.AnswerBoolean = (slots, session, response) => {
         else{
             text += `Sorry to hear that. Please restart the process and try again.`;
         }
+        response.say(text);
     }
-    response.say(text);
+    
 }
 
 exports.AnswerFirstName = (slots, session, response) => {
@@ -112,7 +114,7 @@ exports.AnswerFirstName = (slots, session, response) => {
     else{
         text += `Hello, ${firstName}!`;
     }
-    response.say(text);
+    response.ask(text);
 }
 
 exports.AnswerLastName = (slots, session, response) => {
@@ -124,7 +126,7 @@ exports.AnswerLastName = (slots, session, response) => {
         session.attributes.lastName = lastName;
         session.attributes.stage = 'confirm_rez';
     }
-    response.say(text);
+    response.ask(text);
 }
 
 exports.date = (slots, session, response) => {
@@ -136,7 +138,7 @@ exports.date = (slots, session, response) => {
         session.attributes.date = date;
         session.attributes.stage = 'ask_time';
     }
-    response.say(text);
+    response.ask(text);
 }
 
 exports.time = (slots, session, response) => {
@@ -148,5 +150,5 @@ exports.time = (slots, session, response) => {
         session.attributes.time = time;
         session.attributes.stage = 'ask_firstName';
     }
-    response.say(text);
+    response.ask(text);
 }
