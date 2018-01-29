@@ -158,5 +158,5 @@ exports.romance = (slots, session, response) => {
 }
 
 exports.party = (slots, session, response) => {
-    response.say('Lets get romantic! <audio src="https://s3.amazonaws.com/royal-resorts/welcometothejungle1.mp3" />');   
+    response.say('Lets partayyy!!! <audio src="https://s3.amazonaws.com/royal-resorts/welcometothejungle1.mp3" />');   
 }
