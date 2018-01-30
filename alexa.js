@@ -38,7 +38,7 @@ module.exports = (req, res) => {
     let play = (url, shouldEndSession) => {
         let outputSpeech = {};
         outputSpeech.type = 'PlainText';
-        outputSpeech.text = 'Introducing the best mother effing Engineering team in the region!';
+        outputSpeech.text = 'Introducing the best Engineering team in the region!';
         let directives = [];
         let directive = {};
         let audioItem = {};
