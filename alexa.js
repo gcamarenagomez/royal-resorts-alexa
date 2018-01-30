@@ -52,8 +52,8 @@ module.exports = (req, res) => {
             version: req.version,
             sessionAttributes: session.attributes,
             response: {
-                outputSpeech: outputSpeech;
-                directives: directives;
+                outputSpeech: outputSpeech,
+                directives: directives
             }
         });
         console.log('res.json');
