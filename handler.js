@@ -158,12 +158,9 @@ exports.roomSupport = (slots, session, response) => {
     salesforce.createServiceRequest(slots.value)
     .then(c => {
         console.log('Service request created successfully');
-        
-        console.log('Response: ' + text);
     })
     .catch((err)=> {
         console.error(err);
-        text += 'Oops, something went wrong...';
     });
     response.say('Thank you. Your Service Request has been created successfully. The housekeeper will be with you shortly.');
 }
