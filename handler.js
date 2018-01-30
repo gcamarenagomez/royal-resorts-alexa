@@ -155,7 +155,7 @@ exports.time = (slots, session, response) => {
 
 exports.roomSupport = (slots, session, response) => {
 
-    salesforce.createServiceRequest(slots);
+    salesforce.createServiceRequest(slots)
     .then(c => {
         console.log('Service request created successfully');
         
