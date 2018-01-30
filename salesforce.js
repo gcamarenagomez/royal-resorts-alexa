@@ -83,9 +83,9 @@ let createServiceRequest = (slot) => {
         c.set('Status', 'New');
         c.set('Priority', 'Medium');
         c.set('Origin', 'Alexa');
-        c.set('Subject', slot);
+        c.set('Subject', 'More Towels');
         c.set('Type', 'Room Support');
-        c.set('Description', 'Alexa ask Royal Resorts ' + slot);
+        c.set('Description', 'Alexa ask Royal Resorts for more towels');
         org.insert({sobject: c}, err => {
             if(err){
                 console.error(err);
