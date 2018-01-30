@@ -72,7 +72,7 @@ module.exports = (req, res) => {
         response: {
             say: text => say(text, true),
             ask: text => say(text, false),
-            play: text => play(url, true)
+            play: text => play(text, true)
         }
 
     };
