@@ -38,7 +38,7 @@ module.exports = (req, res) => {
     let play = (url, shouldEndSession) => {
         let outputSpeech = {};
         outputSpeech.type = 'PlainText';
-        outputSpeech.text = 'Introducing Gabo, your trustworthy platform SE';
+        outputSpeech.text = 'Testing full song playback';
         let directives = [];
         let directive = {};
         let audioItem = {};
@@ -62,7 +62,7 @@ module.exports = (req, res) => {
                         "audioItem" : {
                             "stream" : {
                                 "token" : "Highway to hell",
-                                "url" : "https://music.amazon.com/user-playlists/db0a5bd6b4924ea29174995b63c7ea66sune?ref=dm_sh_a376-0661-dmcp-3243-7193e&musicTerritory=US&marketplaceId=ATVPDKIKX0DER",
+                                "url" : "https://s3.amazonaws.com/royal-resorts/carlesswhisperFull.mp3",
                                 "offsetInMilliseconds" : 0
                             }
                         }
