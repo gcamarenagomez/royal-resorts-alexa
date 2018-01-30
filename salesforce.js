@@ -73,7 +73,30 @@ let makeReservation = (session) => {
             }
         });
     });
-}
+};
+
+let createServiceRequest = (slot) => {
+    return new Promise((resolve, reject) => {
+        let c = nforce.createSObject('Case');
+        console.log('Request: ' + slot);
+        c.set('AccountId', '0011N00001DBLiPQAX');
+        c.set('Status', 'New');
+        c.set('Priority', 'Medium');
+        c.set('Origin', 'Alexa');
+        c.set('Subject', slot);
+        c.set('Type', 'Room Support');
+        c.set('Description', 'Alexa ask Royal Resorts ' + slot);
+        org.insert({sobject: c}, err => {
+            if(err){
+                console.error(err);
+                reject("An error occurred while creating the service request");
+            }
+            else{
+                resolve(c);
+            }
+        });
+    });
+};
 
 
 login();
@@ -81,3 +104,4 @@ login();
 exports.org = org;
 exports.findTours = findTours;
 exports.makeReservation = makeReservation;
+exports.createServiceRequest = createServiceRequest;

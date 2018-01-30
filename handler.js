@@ -153,6 +153,21 @@ exports.time = (slots, session, response) => {
     response.ask(text);
 }
 
+exports.roomSupport = (slots, session, response) => {
+
+    salesforce.createServiceRequest(slots);
+    .then(c => {
+        console.log('Service request created successfully');
+        
+        console.log('Response: ' + text);
+    })
+    .catch((err)=> {
+        console.error(err);
+        text += 'Oops, something went wrong...';
+    });
+    response.say('Thank you. Your Service Request has been created successfully. The housekeeper will be with you shortly.');
+}
+
 exports.romance = (slots, session, response) => {
     response.say('Lets get romantic! <audio src="https://s3.amazonaws.com/royal-resorts/carlesswhisper4.mp3" />');
 }
