@@ -38,7 +38,7 @@ module.exports = (req, res) => {
     let play = (url, shouldEndSession) => {
         let outputSpeech = {};
         outputSpeech.type = 'PlainText';
-        outputSpeech.text = '';
+        outputSpeech.text = 'Introducing Gabo, your trustworthy platform SE';
         let directives = [];
         let directive = {};
         let audioItem = {};
