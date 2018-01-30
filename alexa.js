@@ -68,7 +68,7 @@ module.exports = (req, res) => {
                 ]
             }
         });
-        console.log(res.json.response);
+        console.log(response);
     };
 
     return {
