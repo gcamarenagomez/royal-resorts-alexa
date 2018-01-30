@@ -38,7 +38,7 @@ module.exports = (req, res) => {
     let play = (url, shouldEndSession) => {
         let outputSpeech = {};
         outputSpeech.type = 'PlainText';
-        outputSpeech.text = 'Testing full song playback';
+        outputSpeech.text = 'Introducing the best mother effing Engineering team in the region!';
         let directives = [];
         let directive = {};
         let audioItem = {};
@@ -62,7 +62,7 @@ module.exports = (req, res) => {
                         "audioItem" : {
                             "stream" : {
                                 "token" : "Highway to hell",
-                                "url" : "https://s3.amazonaws.com/royal-resorts/carlesswhisperFull.mp3",
+                                "url" : "https://s3.amazonaws.com/royal-resorts/ThunderstruckFull.mp3",
                                 "offsetInMilliseconds" : 0
                             }
                         }
