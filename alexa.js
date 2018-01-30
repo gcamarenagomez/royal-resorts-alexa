@@ -56,7 +56,7 @@ module.exports = (req, res) => {
                 directives: directives
             }
         });
-        console.log(res);
+        console.log(res.json());
     };
 
     return {
