@@ -166,13 +166,25 @@ exports.roomSupport = (slots, session, response) => {
 }
 
 exports.romance = (slots, session, response) => {
-    response.play('','Lets get romantic! <audio src="https://s3.amazonaws.com/royal-resorts/carlesswhisper4.mp3" />');
+    song = {
+        text: 'Introducing the best motherfucking Engineering team in the Region! I give you Cesar, Aldo and Christian, The Chipmunks!',
+        url: 'https://s3.amazonaws.com/royal-resorts/Thunderstruck-ACDC.mp3'
+    }
+    response.play(song);
 }
 
 exports.party = (slots, session, response) => {
-    response.play('','Lets party!!! <audio src="https://s3.amazonaws.com/royal-resorts/welcometothejungle1.mp3" />');   
+    song = {
+        text: 'Introducing the best motherfucking Engineering team in the Region! I give you Cesar, Aldo and Christian, The Chipmunks!',
+        url: 'https://s3.amazonaws.com/royal-resorts/Thunderstruck-ACDC.mp3'
+    }
+    response.play(song);
 }
 
 exports.introduceSpeaker = (slots, session, response) => {
-    response.play('Introducing the best motherfucking Engineering team in the Region! I give you Cesar, Aldo and Christian, The Chipmunks!','https://s3.amazonaws.com/royal-resorts/Thunderstruck-ACDC.mp3');
+    song = {
+        text: 'Introducing the best motherfucking Engineering team in the Region! I give you Cesar, Aldo and Christian, The Chipmunks!',
+        url: 'https://s3.amazonaws.com/royal-resorts/Thunderstruck-ACDC.mp3'
+    }
+    response.play(song);
 }

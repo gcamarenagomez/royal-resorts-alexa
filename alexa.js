@@ -35,17 +35,17 @@ module.exports = (req, res) => {
 
     };
 
-    let play = (text,url, shouldEndSession) => {
+    let play = (song, shouldEndSession) => {
         let outputSpeech = {};
         outputSpeech.type = 'PlainText';
-        outputSpeech.text = text;
+        outputSpeech.text = song.text;
         let directives = [];
         let directive = {};
         let audioItem = {};
         let stream = {};
         directive.type = 'AudioPlayer.Play';
         directive.playBehavior = 'REPLACE_ALL';
-        stream.url = url;
+        stream.url = song.url;
         audioItem.stream = stream;
         directive.audioItem = audioItem;
         directives.push(directive);
@@ -62,7 +62,7 @@ module.exports = (req, res) => {
                         "audioItem" : {
                             "stream" : {
                                 "token" : "Highway to hell",
-                                "url" : "https://s3.amazonaws.com/royal-resorts/keiji.mp3",
+                                "url" : song.url,
                                 "offsetInMilliseconds" : 0
                             }
                         }
@@ -85,7 +85,7 @@ module.exports = (req, res) => {
         response: {
             say: text => say(text, true),
             ask: text => say(text, false),
-            play: text,url => play(text,url, true)
+            play: song => play(song, true)
         }
 
     };
