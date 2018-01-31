@@ -179,3 +179,8 @@ exports.introduceSpeaker = (slots, session, response) => {
     session.attributes.url = 'https://s3.amazonaws.com/royal-resorts/Thunderstruck-ACDC.mp3';
     response.play('Introducing the best motherfucking Engineering team in the Region! I give you Cesar, Aldo and Christian, The Chipmunks!');
 }
+
+exports.stopPlaying = (slots, session, response) => {
+    session.attributes.url = '';
+    response.play('Stopping playback.');
+}
