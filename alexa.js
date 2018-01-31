@@ -35,10 +35,10 @@ module.exports = (req, res) => {
 
     };
 
-    let play = (song, shouldEndSession) => {
+    let play = (text, shouldEndSession) => {
         let outputSpeech = {};
         outputSpeech.type = 'PlainText';
-        outputSpeech.text = song.text;
+        outputSpeech.text = text;
         let directives = [];
         let directive = {};
         let audioItem = {};
