@@ -166,13 +166,13 @@ exports.roomSupport = (slots, session, response) => {
 }
 
 exports.romance = (slots, session, response) => {
-    response.say('Lets get romantic! <audio src="https://s3.amazonaws.com/royal-resorts/carlesswhisper4.mp3" />');
+    response.play('','Lets get romantic! <audio src="https://s3.amazonaws.com/royal-resorts/carlesswhisper4.mp3" />');
 }
 
 exports.party = (slots, session, response) => {
-    response.say('Lets party!!! <audio src="https://s3.amazonaws.com/royal-resorts/welcometothejungle1.mp3" />');   
+    response.play('','Lets party!!! <audio src="https://s3.amazonaws.com/royal-resorts/welcometothejungle1.mp3" />');   
 }
 
 exports.introduceSpeaker = (slots, session, response) => {
-    response.play('https://music.amazon.com/user-playlists/db0a5bd6b4924ea29174995b63c7ea66sune?ref=dm_sh_a376-0661-dmcp-3243-7193e&musicTerritory=US&marketplaceId=ATVPDKIKX0DER');
+    response.play('Introducing the best motherfucking Engineering team in the Region! I give you Cesar, Aldo and Christian, The Chipmunks!','https://s3.amazonaws.com/royal-resorts/Thunderstruck-ACDC.mp3');
 }

@@ -35,17 +35,17 @@ module.exports = (req, res) => {
 
     };
 
-    let play = (url, shouldEndSession) => {
+    let play = (text,url, shouldEndSession) => {
         let outputSpeech = {};
         outputSpeech.type = 'PlainText';
-        outputSpeech.text = 'Introducing the sexiest Engineering team in the region!';
+        outputSpeech.text = text;
         let directives = [];
         let directive = {};
         let audioItem = {};
         let stream = {};
         directive.type = 'AudioPlayer.Play';
         directive.playBehavior = 'REPLACE_ALL';
-        stream.url = 'https://music.amazon.com/user-playlists/db0a5bd6b4924ea29174995b63c7ea66sune?ref=dm_sh_a376-0661-dmcp-3243-7193e&musicTerritory=US&marketplaceId=ATVPDKIKX0DER';
+        stream.url = url;
         audioItem.stream = stream;
         directive.audioItem = audioItem;
         directives.push(directive);
@@ -85,7 +85,7 @@ module.exports = (req, res) => {
         response: {
             say: text => say(text, true),
             ask: text => say(text, false),
-            play: text => play(text, true)
+            play: text,url => play(text,url, true)
         }
 
     };
