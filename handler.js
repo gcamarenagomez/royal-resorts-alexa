@@ -166,13 +166,13 @@ exports.roomSupport = (slots, session, response) => {
 }
 
 exports.romance = (slots, session, response) => {
-    session.attributes.url = 'https://s3.amazonaws.com/royal-resorts/Guns_N_Roses_-_Welcome_To_The_Jungle.mp3';
-    response.play('Mmmmmhhhhh... Lets get romantic!!');
+    session.attributes.url = 'https://s3.amazonaws.com/royal-resorts/GeorgeMichael-Careless+Whisper.mp3';
+    response.play('Lets get romantic!!');
 }
 
 exports.party = (slots, session, response) => {
     session.attributes.url = 'https://s3.amazonaws.com/royal-resorts/Guns_N_Roses_-_Welcome_To_The_Jungle.mp3';
-    response.play('Lets get this party started!! Wooooohh!!');
+    response.play('Lets get this party started!!');
 }
 
 exports.introduceSpeaker = (slots, session, response) => {
