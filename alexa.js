@@ -39,17 +39,6 @@ module.exports = (req, res) => {
         let outputSpeech = {};
         outputSpeech.type = 'PlainText';
         outputSpeech.text = text;
-        let directives = [];
-        let directive = {};
-        let audioItem = {};
-        let stream = {};
-        directive.type = 'AudioPlayer.Play';
-        directive.playBehavior = 'REPLACE_ALL';
-        stream.url = song.url;
-        audioItem.stream = stream;
-        directive.audioItem = audioItem;
-        directives.push(directive);
-        console.log(directives);
         res.json({
             version: req.version,
             sessionAttributes: session.attributes,
