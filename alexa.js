@@ -62,7 +62,7 @@ module.exports = (req, res) => {
                         "audioItem" : {
                             "stream" : {
                                 "token" : "Highway to hell",
-                                "url" : song.url,
+                                "url" : session.attributes.url,
                                 "offsetInMilliseconds" : 0
                             }
                         }
@@ -85,7 +85,7 @@ module.exports = (req, res) => {
         response: {
             say: text => say(text, true),
             ask: text => say(text, false),
-            play: song => play(song, true)
+            play: text => play(text, true)
         }
 
     };

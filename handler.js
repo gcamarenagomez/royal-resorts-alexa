@@ -182,9 +182,6 @@ exports.party = (slots, session, response) => {
 }
 
 exports.introduceSpeaker = (slots, session, response) => {
-    song = {
-        text: 'Introducing the best motherfucking Engineering team in the Region! I give you Cesar, Aldo and Christian, The Chipmunks!',
-        url: 'https://s3.amazonaws.com/royal-resorts/Thunderstruck-ACDC.mp3'
-    }
-    response.play(song);
+    session.attributes.url = 'https://s3.amazonaws.com/royal-resorts/Thunderstruck-ACDC.mp3';
+    response.play('Introducing the best motherfucking Engineering team in the Region! I give you Cesar, Aldo and Christian, The Chipmunks!');
 }
