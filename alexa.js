@@ -52,7 +52,7 @@ module.exports = (req, res) => {
                             "stream" : {
                                 "token" : "Highway to hell",
                                 "url" : session.attributes.url,
-                                "offsetInMilliseconds" : 0
+                                "offsetInMilliseconds" : 5000
                             }
                         }
                     }
