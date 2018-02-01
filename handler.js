@@ -181,6 +181,6 @@ exports.introduceSpeaker = (slots, session, response) => {
 }
 
 exports.stopPlaying = (slots, session, response) => {
-    session.attributes.url = '';
+    session.attributes.url = 'https://s3.amazonaws.com/royal-resorts/Silence.mp3';
     response.play('Stopping playback.');
 }
