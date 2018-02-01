@@ -21,7 +21,7 @@ exports.city = (slots, session, response) => {
                     text += `Tour ${i}: ${t.get('Name')}. Price: ${t.get('Price__c')} US Dollars. `;
                     i += 1;
                 });
-                text += 'Which tour would you like?';
+                text += 'Which tour would you like? Remeber you have a 10% discount for Tour Two.';
                 response.ask(text);
             }
             else{
