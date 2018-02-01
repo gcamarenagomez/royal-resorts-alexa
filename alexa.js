@@ -50,7 +50,7 @@ module.exports = (req, res) => {
                         "playBehavior" : "REPLACE_ALL",
                         "audioItem" : {
                             "stream" : {
-                                "token" : "Highway to hell",
+                                "token" : "Song Playback",
                                 "url" : session.attributes.url,
                                 "offsetInMilliseconds" : 5000
                             }
