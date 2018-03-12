@@ -172,12 +172,12 @@ exports.romance = (slots, session, response) => {
 
 exports.party = (slots, session, response) => {
     session.attributes.url = 'https://s3.amazonaws.com/royal-resorts/Guns_N_Roses_-_Welcome_To_The_Jungle.mp3';
-    response.play('Lets get this party started!! Hit it Juan Carlos!');
+    response.play('Lets get this party started!!');
 }
 
 exports.introduceSpeaker = (slots, session, response) => {
     session.attributes.url = 'https://s3.amazonaws.com/royal-resorts/Thunderstruck-ACDC.mp3';
-    response.play('Introducing the awesome Sales Engineering Team! I give you Cesar, Aldo, Christian, and Gabriel');
+    response.play('Introducing the awesome Sales Engineering Team! I give you Cesar, Aldo, Christian, and Francisco');
 }
 
 exports.stopPlaying = (slots, session, response) => {
