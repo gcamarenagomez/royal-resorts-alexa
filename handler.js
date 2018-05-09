@@ -177,7 +177,7 @@ exports.party = (slots, session, response) => {
 
 exports.introduceSpeaker = (slots, session, response) => {
     session.attributes.url = 'https://s3.amazonaws.com/royal-resorts/Misirlou.mp3';
-    response.play('Introducing the awesome Ohana Resorts Staff! I give you Vanessa as The Front Desk Manager, Claudio in the Marketing Team, Aldo in the Operations Team, and Claudio in the Service Team');
+    response.play('Introducing the awesome Ohana Resorts Staff! I give you Vanessa as The Front Desk Manager, Claudio as the Marketing Manager, Aldo as the Operations Manager, and Claudio as the Service Manager');
 }
 
 exports.stopPlaying = (slots, session, response) => {
