@@ -19,7 +19,7 @@ app.post('/royalresorts', (req, res) => {
         response = alx.response;
 
     if (type === 'LaunchRequest') {
-        response.say("Welcome to Royal Resorts!");
+        response.say("Welcome to Ohana Resorts!");
     } else if (type === 'IntentRequest') {
         let handler = handlers[intent];
         if (handler) {
