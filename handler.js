@@ -40,9 +40,11 @@ exports.city = (slots, session, response) => {
 
 exports.AnswerNumber = (slots, session, response) => {
     let option = slots.NumericAnswer.value;
+    console.log("Number: " + option);
     let text = '';
     if(session.attributes.stage === 'select_option'){
-        console.log(session.attributes.tours);        
+        console.log(session.attributes.tours); 
+
         let selectedTour = session.attributes.tours[option-1];
         console.log(selectedTour);
         text += `You selected ${selectedTour.name}. `;
@@ -67,6 +69,7 @@ exports.AnswerBoolean = (slots, session, response) => {
     console.log(slots.BoolAnswer.value);
     console.log(session.attributes.stage);
     let answer = slots.BoolAnswer.value;
+    console.log('Answer: ' + answer);
     let text = '';
     if(session.attributes.stage === 'ask_reservation'){        
         if(answer === 'yes'){

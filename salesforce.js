@@ -27,6 +27,7 @@ let login = () => {
 };
 
 let findTours = (params) => {
+    console.log('City: ' + params.city);
     let where = "";
     if(params){
         let parts = [];
