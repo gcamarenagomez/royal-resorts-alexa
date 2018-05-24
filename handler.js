@@ -4,6 +4,7 @@ let salesforce = require("./salesforce");
 
 exports.searchDeals = (slots, session, response) => {
     session.attributes.stage = 'ask_city';
+    console.log('slots %j', slots);
     response.ask("OK, in what city?");
 }
 
