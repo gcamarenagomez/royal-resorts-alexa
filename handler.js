@@ -10,6 +10,7 @@ exports.searchDeals = (slots, session, response) => {
 
 exports.city = (slots, session, response) => {
     if(session.attributes.stage === 'ask_city'){
+        console.log('City: ' + slots.CityName.value);
         salesforce.findTours({city: slots.CityName.value})
         .then(tours => {
             session.attributes.tours = tours;
