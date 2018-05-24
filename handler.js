@@ -3,6 +3,7 @@
 let salesforce = require("./salesforce");
 
 exports.searchDeals = (slots, session, response) => {
+    console.log('Entered searchDeals');
     session.attributes.stage = 'ask_city';
     console.log('slots %j', slots);
     response.ask("OK, in what city?");
@@ -10,6 +11,7 @@ exports.searchDeals = (slots, session, response) => {
 
 
 exports.city = (slots, session, response) => {
+    console.log('Entered city');
     if(session.attributes.stage === 'ask_city'){
         console.log('City: ' + slots.CityName.value);
         salesforce.findTours({city: slots.CityName.value})
@@ -41,6 +43,7 @@ exports.city = (slots, session, response) => {
 }
 
 exports.AnswerNumber = (slots, session, response) => {
+    console.log('Entered answerNumber');
     let option = slots.NumericAnswer.value;
     console.log("Number: " + option);
     let text = '';
@@ -68,6 +71,7 @@ exports.AnswerNumber = (slots, session, response) => {
 }
 
 exports.AnswerBoolean = (slots, session, response) => {
+    console.log('Entered AnswerBoolean');
     console.log(slots.BoolAnswer.value);
     console.log(session.attributes.stage);
     let answer = slots.BoolAnswer.value;
@@ -108,6 +112,7 @@ exports.AnswerBoolean = (slots, session, response) => {
 }
 
 exports.AnswerFirstName = (slots, session, response) => {
+    console.log('Entered answerFirstName');
     console.log(slots.firstName.value);
     let firstName = slots.firstName.value;
     let text = '';
@@ -123,6 +128,7 @@ exports.AnswerFirstName = (slots, session, response) => {
 }
 
 exports.AnswerLastName = (slots, session, response) => {
+    console.log('Entered answerLastName');
     console.log(slots.lastName.value);
     let lastName = slots.lastName.value;
     let text = '';
@@ -135,6 +141,7 @@ exports.AnswerLastName = (slots, session, response) => {
 }
 
 exports.date = (slots, session, response) => {
+    console.log('Entered date');
     console.log(slots.resDate.value);
     let date = slots.resDate.value;
     let text = '';
@@ -147,6 +154,7 @@ exports.date = (slots, session, response) => {
 }
 
 exports.time = (slots, session, response) => {
+    console.log('Entered time');
     console.log(slots.resTime.value);
     let time = slots.resTime.value;
     let text = '';
@@ -159,7 +167,7 @@ exports.time = (slots, session, response) => {
 }
 
 exports.roomSupport = (slots, session, response) => {
-
+    console.log('Entered roomSupport');
     salesforce.createServiceRequest('More towels')
     .then(c => {
         console.log('Service request created successfully');
@@ -171,21 +179,25 @@ exports.roomSupport = (slots, session, response) => {
 }
 
 exports.romance = (slots, session, response) => {
+    console.log('Entered romance');
     session.attributes.url = 'https://s3.amazonaws.com/royal-resorts/GeorgeMichael-Careless+Whisper.mp3';
     response.play('Lets get romantic!!');
 }
 
 exports.party = (slots, session, response) => {
+    console.log('Entered party');
     session.attributes.url = 'https://s3.amazonaws.com/royal-resorts/Guns_N_Roses_-_Welcome_To_The_Jungle.mp3';
     response.play('Lets get this party started!!');
 }
 
 exports.introduceSpeaker = (slots, session, response) => {
+    console.log('Entered introduceSpeaker');
     session.attributes.url = 'https://s3.amazonaws.com/royal-resorts/Misirlou.mp3';
     response.play('Introducing the awesome Ohana Resorts Staff! I give you Ernesto as the General Manager, Vanessa as The Front Desk Manager, Claudio as the Marketing Manager, Aldo as the Operations Manager, and Claudio as the Service Manager');
 }
 
 exports.stopPlaying = (slots, session, response) => {
+    console.log('Entered stopPlaying');
     session.attributes.url = 'https://s3.amazonaws.com/royal-resorts/Silence.mp3';
     response.play('Stopping playback.');
 }
